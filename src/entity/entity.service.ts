@@ -19,7 +19,7 @@ export class EntityService {
     const entity = entities.find((entity) => entity.id === id);
 
     if (!entity) {
-      throw new HttpException('Forbidden', HttpStatus.NOT_FOUND);
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
 
     return entity;
