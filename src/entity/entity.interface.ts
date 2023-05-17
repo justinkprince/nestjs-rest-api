@@ -1,7 +1,7 @@
-import { Status } from "./entity-status.enum";
+import { EntityStatus } from "./entity-status.enum";
 
 export interface Entity {
   id: string;
   title: string;
-  status: Status;
+  status: EntityStatus;
 };

@@ -2,7 +2,7 @@ import { Filter } from "src/types/filter.interface";
 import { Entity } from "./entity.interface";
 
 export class EntityFilter implements Filter<Entity> {
-  apply(entities: Entity[], filters: any) {
+  apply(entities: Entity[], filters: any): Entity[] {
     return entities.filter((entity: Entity) => {
       const matches = [];
   

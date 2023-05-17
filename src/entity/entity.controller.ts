@@ -7,12 +7,12 @@ export class EntityController {
   constructor(private entityService: EntityService) {}
 
   @Get()
-  findAll(@Query() filters): Entity[] {
-    return this.entityService.findAll(filters);
+  findAll(@Query() params): Entity[] {
+    return this.entityService.findAll(params);
   }
 
   @Get(':id')
-  findOne(@Param() params: any): Entity {
-    return this.entityService.findOne(params.id);
+  findOne(@Param('id') id: string): Entity {
+    return this.entityService.findOne(id);
   }
 }

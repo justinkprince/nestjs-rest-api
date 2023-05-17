@@ -1,35 +1,13 @@
-import { Entity } from "src/entity/entity.interface";
-import { Status } from "src/entity/entity-status.enum";
+import { randMovie } from '@ngneat/falso';
+import { Entity } from 'src/entity/entity.interface';
+import { EntityStatus } from 'src/entity/entity-status.enum';
+import { randomEnum } from 'src/utils';
 
-export const entities: Entity[] = [
-  {
-    id: '123',
-    title: 'Frozen',
-    status: Status.Active
-  },
-  {
-    id: '234',
-    title: 'Frozen II',
-    status: Status.Upcoming
-  },
-  {
-    id: '345',
-    title: 'Up',
-    status: Status.Active
-  },
-  {
-    id: '456',
-    title: 'Down',
-    status: Status.Expired
-  },
-  {
-    id: '567',
-    title: 'Home',
-    status: Status.Upcoming
-  },
-  {
-    id: '678',
-    title: 'Frozen',
-    status: Status.Active
-  },
-];
+const movies = randMovie({ length: 900 });
+let idCounter = 100;
+
+export const entities = movies.map((movie): Entity => ({
+  id: '' + idCounter++,
+  title: movie,
+  status: randomEnum(EntityStatus),
+}));
