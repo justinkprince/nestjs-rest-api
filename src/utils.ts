@@ -25,3 +25,7 @@ export const randomEnum = <T>(anEnum: T): T[keyof T] => {
 
   return enumValues[randomIndex];
 }
+
+export const generateCookieData = (bytes: number) => {
+  return 'a'.repeat(bytes);
+};
