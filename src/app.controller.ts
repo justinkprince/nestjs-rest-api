@@ -1,4 +1,4 @@
-import { Controller, Get, Response } from '@nestjs/common';
+import { Controller, Get, Post, Request, Response } from '@nestjs/common';
 import { AppService } from './app.service';
 import { generateCookieData } from './utils';
 
@@ -12,12 +12,10 @@ export class AppController {
   }
 
   @Get('login')
-  async login(
-    @Response() res,
-  ) {
+  async login(@Request() req, @Response() res) {
     try {
       const accessToken = generateCookieData(4000);
-      const user = { username: 'USER' };
+      const cookies = JSON.stringify(req.cookies);
 
       res.cookie('accessToken', accessToken, {
         expires: new Date(new Date().getTime() + 30 * 1000),
@@ -49,9 +47,16 @@ export class AppController {
         httpOnly: true,
       });
 
-      return res.send(user);
+      return res.send(cookies);
     } catch (error) {
       throw error;
     }
+  }
+
+  @Post('cookies')
+  async cookies(@Request() req, @Response() res) {
+    const cookies = JSON.stringify(req.cookies);
+
+    return res.send(cookies);
   }
 }
